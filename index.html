@@ -24,18 +24,18 @@
                 // Hintergrundbild oben (Startseite)
                 heroBg: 'img/hero-bg.png',
                 
-                // Bestseller Bilder (Startseite)
+                // Bestseller Bilder (Startseite) - JETZT MIT GROSSEN .PNG
                 menu: {
-                    kebab: 'img/kebab.png',
-                    durum: 'img/durum.png',
-                    teller: 'img/teller.png'
+                    kebab: 'img/kebab.PNG',
+                    durum: 'img/durum.PNG',
+                    pizza: 'img/pizza.PNG'
                 },
 
                 // GANZ WICHTIG: Das Bild für die Speisekarte (Menü-Seite)
                 menuCard: 'img/speisekarte.png',
 
                 // Google Maps: Statisches Bild und Link
-                mapImage: 'img/karte.png',
+                mapImage: 'img/karte.PNG',
                 mapLink: "https://www.google.com/maps/search/?api=1&query=Engerser+Landstraße+63,+56564+Neuwied"
             }
         };
@@ -65,10 +65,10 @@
             document.getElementById('site-logo').src = siteConfig.images.logo;
             document.querySelector('.hero-bg').style.backgroundImage = `url('${siteConfig.images.heroBg}')`;
             
-            // Bestseller
+            // Bestseller Bilder setzen
             document.getElementById('img-kebab').src = siteConfig.images.menu.kebab;
             document.getElementById('img-durum').src = siteConfig.images.menu.durum;
-            document.getElementById('img-teller').src = siteConfig.images.menu.teller;
+            document.getElementById('img-pizza').src = siteConfig.images.menu.pizza; // Hier jetzt Pizza statt Teller
             
             // Große Speisekarte
             document.getElementById('img-menu-full').src = siteConfig.images.menuCard;
@@ -282,17 +282,17 @@
                             </div>
                         </div>
 
-                        <!-- Item 3: Teller -->
+                        <!-- Item 3: Pizza (NEU) -->
                         <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group">
                             <div class="h-48 overflow-hidden bg-gray-200">
-                                <img id="img-teller" alt="Döner Teller" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <img id="img-pizza" alt="Pizza" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <div class="p-6">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-xl font-bold font-display uppercase">Döner Teller</h3>
-                                    <span class="text-brand-orange font-bold text-xl">12,50 €</span>
+                                    <h3 class="text-xl font-bold font-display uppercase">Pizza</h3>
+                                    <span class="text-brand-orange font-bold text-xl">ab 8,50 €</span>
                                 </div>
-                                <p class="text-gray-500 text-sm mb-4">Große Portion Fleisch mit Pommes oder Reis, dazu Salat und Brot.</p>
+                                <p class="text-gray-500 text-sm mb-4">Hausgemachter Teig, fruchtige Tomatensauce, echter Mozzarella und Belag nach Wahl.</p>
                                 <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 02631 / 123 456 um zu bestellen!')">Bestellen</button>
                             </div>
                         </div>
