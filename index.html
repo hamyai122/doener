@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Döner King | Der beste Döner in Neuwied</title>
+    <title>Döner King | Der beste Döner in Ihrer Stadt</title>
 
     <!-- ========================================== -->
-    <!-- LOKALE RESSOURCE                           -->
-    <!-- Greift jetzt auf den Ordner "js" zu.       -->
-    <!-- Datei muss unter "js/tailwind.js" liegen!  -->
+    <!-- EXTERNE RESSOURCE (TEMPORÄR FÜR VORSCHAU)  -->
+    <!-- VOR VERÖFFENTLICHUNG LOKAL ERSETZEN!       -->
     <!-- ========================================== -->
-    <script src="js/tailwind.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // Tailwind Config
+        // Tailwind Konfiguration
         tailwind.config = {
             theme: {
                 extend: {
@@ -34,40 +33,28 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Router Logik (Seitenwechsel)
+            // Router Logik (Seitenwechsel innerhalb der Single Page App)
             function handleRouting() {
                 const hash = window.location.hash || '#home';
                 
-                // Alle Seiten ausblenden
                 document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
                 
-                // Entsprechende Seite anzeigen
                 if (hash === '#home') {
-                    const viewHome = document.getElementById('view-home');
-                    if(viewHome) viewHome.classList.remove('hidden');
+                    document.getElementById('view-home').classList.remove('hidden');
                 } else if (hash === '#menu-karte') {
-                    const viewMenu = document.getElementById('view-menu-karte');
-                    if(viewMenu) viewMenu.classList.remove('hidden');
+                    document.getElementById('view-menu-karte').classList.remove('hidden');
                 } else if (hash === '#impressum') {
-                    const viewImpressum = document.getElementById('view-impressum');
-                    if(viewImpressum) viewImpressum.classList.remove('hidden');
+                    document.getElementById('view-impressum').classList.remove('hidden');
                 } else if (hash === '#datenschutz') {
-                    const viewDS = document.getElementById('view-datenschutz');
-                    if(viewDS) viewDS.classList.remove('hidden');
+                    document.getElementById('view-datenschutz').classList.remove('hidden');
                 } else {
-                    // Fallback zu Home
-                    const viewHome = document.getElementById('view-home');
-                    if(viewHome) viewHome.classList.remove('hidden');
+                    document.getElementById('view-home').classList.remove('hidden');
                 }
                 
-                // Nach oben scrollen beim Wechsel
                 window.scrollTo(0, 0);
             }
 
-            // Event Listener für Hash-Änderungen
             window.addEventListener('hashchange', handleRouting);
-            
-            // Initiale Prüfung
             handleRouting();
         });
     </script>
@@ -78,8 +65,8 @@
             background-position: center;
             background-repeat: no-repeat;
             background-color: #2B2D42;
-            /* LOKALES BILD */
-            background-image: url('img/hero-bg.png'); 
+            /* Unsplash Hero Background Placeholder */
+            background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1920&q=80'); 
         }
         .gradient-overlay {
             background: linear-gradient(to bottom, rgba(43, 45, 66, 0.7), rgba(43, 45, 66, 0.9));
@@ -98,36 +85,34 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.hash='#home'">
                     <img 
-                        src="img/logo.png" 
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=150&q=80" 
                         alt="Döner King Logo" 
-                        class="h-12 w-auto object-contain"
+                        class="h-12 w-auto object-contain rounded"
                     >
                 </div>
 
-                <!-- Desktop Menu -->
+                <!-- Desktop Menü -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-brand-dark hover:text-brand-orange font-medium transition">Start</a>
                     <a href="#menu-karte" class="text-brand-dark hover:text-brand-orange font-medium transition">Menü</a>
                     <a href="#home" onclick="setTimeout(() => document.getElementById('about').scrollIntoView(), 100)" class="text-brand-dark hover:text-brand-orange font-medium transition">Über Uns</a>
                     
                     <a href="#contact" onclick="if(window.location.hash !== '#home') { window.location.hash='#home'; setTimeout(() => document.getElementById('contact').scrollIntoView(), 100); } else { document.getElementById('contact').scrollIntoView(); }" class="px-5 py-2 rounded-full bg-brand-orange text-white font-medium hover:bg-orange-600 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center gap-2">
-                        <!-- Shopping Bag Icon (Clean SVG) -->
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                         Bestellen
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
+                <!-- Mobiles Menü Button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-brand-dark hover:text-brand-orange focus:outline-none">
-                        <!-- Hamburger Menu Icon (Clean SVG) -->
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
+        <!-- Mobile Menü Panel -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
                 <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-gray-50">Start</a>
@@ -145,7 +130,7 @@
         <div id="view-home" class="page-view">
             
             <!-- Hero Section -->
-            <section class="relative min-h-[90vh] flex items-center justify-center hero-bg overflow-hidden" style="background-image: url('img/hero-bg.png');">
+            <section class="relative min-h-[90vh] flex items-center justify-center hero-bg overflow-hidden">
                 <div class="absolute inset-0 gradient-overlay"></div>
                 <div class="relative z-10 px-4 max-w-7xl mx-auto w-full py-20">
                     <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -153,14 +138,14 @@
                         <!-- Text -->
                         <div class="text-center md:text-left">
                             <span class="inline-block py-1 px-3 rounded-full bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-sm font-medium tracking-wide mb-6 backdrop-blur-sm">
-                                DAS ORIGINAL IN NEUWIED
+                                DAS ORIGINAL IN IHRER STADT
                             </span>
-                            <h1 class="text-5xl md:text-7xl font-display font-medium text-white mb-6 leading-tight uppercase">
+                            <h1 class="text-4xl md:text-7xl font-display font-medium text-white mb-6 leading-tight uppercase">
                                 Königlicher Geschmack.<br>
                                 <span class="text-brand-orange">Beste Qualität.</span>
                             </h1>
-                            <p class="text-xl text-gray-200 mb-10 font-light max-w-xl mx-auto md:mx-0">
-                                Willkommen bei Döner King. Speisen vor Ort, zum Mitnehmen oder kontaktlose Lieferung direkt zu dir nach Hause.
+                            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-xl mx-auto md:mx-0">
+                                Willkommen bei Döner King. Speisen vor Ort, zum Mitnehmen oder kontaktlose Lieferung direkt zu Ihnen nach Hause.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                                 <a href="#menu-karte" class="px-8 py-4 bg-brand-orange text-white font-bold rounded-lg hover:bg-orange-600 transition shadow-lg text-lg flex items-center justify-center gap-2">
@@ -188,11 +173,10 @@
                             </div>
                         </div>
 
-                        <!-- Bild vom Laden -->
-                        <div class="hidden md:block relative group">
-                            <!-- Schleier entfernt, nur noch das saubere Bild -->
+                        <!-- Bild vom Laden (Unsplash Placeholder) -->
+                        <div class="relative group mt-10 md:mt-0">
                             <img 
-                                src="img/laden.PNG" 
+                                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80" 
                                 alt="Unser Döner Laden" 
                                 class="relative w-full max-w-md mx-auto aspect-square object-cover rounded-3xl shadow-2xl border-4 border-white/10 transform transition duration-500 hover:scale-[1.02]"
                             >
@@ -239,7 +223,7 @@
                         <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group">
                             <div class="h-48 overflow-hidden bg-gray-200">
                                 <img 
-                                    src="img/kebab.PNG" 
+                                    src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=800&q=80" 
                                     alt="Döner Kebab" 
                                     class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                                 >
@@ -250,7 +234,7 @@
                                     <span class="text-brand-orange font-bold text-xl">7,50 €</span>
                                 </div>
                                 <p class="text-gray-500 text-sm mb-4">Im knusprigen Fladenbrot mit Salat, Tomaten, Gurken, Zwiebeln und Sauce nach Wahl.</p>
-                                <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 02631 / 400 10 21 um zu bestellen!')">Bestellen</button>
+                                <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 01234 / 567 89 0 um zu bestellen!')">Bestellen</button>
                             </div>
                         </div>
 
@@ -258,7 +242,7 @@
                         <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group">
                             <div class="h-48 overflow-hidden bg-gray-200">
                                 <img 
-                                    src="img/durum.PNG" 
+                                    src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=800&q=80" 
                                     alt="Dürüm" 
                                     class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                                 >
@@ -269,7 +253,7 @@
                                     <span class="text-brand-orange font-bold text-xl">8,00 €</span>
                                 </div>
                                 <p class="text-gray-500 text-sm mb-4">Gerollt im dünnen Teigfladen. Perfekt für unterwegs. Mit Fleisch und Salat.</p>
-                                <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 02631 / 400 10 21 um zu bestellen!')">Bestellen</button>
+                                <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 01234 / 567 89 0 um zu bestellen!')">Bestellen</button>
                             </div>
                         </div>
 
@@ -277,7 +261,7 @@
                         <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group">
                             <div class="h-48 overflow-hidden bg-gray-200">
                                 <img 
-                                    src="img/pizza.PNG" 
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" 
                                     alt="Pizza" 
                                     class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                                 >
@@ -288,7 +272,7 @@
                                     <span class="text-brand-orange font-bold text-xl">ab 8,50 €</span>
                                 </div>
                                 <p class="text-gray-500 text-sm mb-4">Hausgemachter Teig, fruchtige Tomatensauce, echter Mozzarella und Belag nach Wahl.</p>
-                                <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 02631 / 400 10 21 um zu bestellen!')">Bestellen</button>
+                                <button class="w-full py-2 border-2 border-brand-dark rounded-lg font-medium hover:bg-brand-dark hover:text-white transition" onclick="alert('Rufen Sie uns an unter 01234 / 567 89 0 um zu bestellen!')">Bestellen</button>
                             </div>
                         </div>
                     </div>
@@ -310,7 +294,7 @@
                         <div>
                             <h2 class="text-4xl font-display font-bold mb-6 uppercase">Besuch Uns</h2>
                             <p class="text-gray-400 mb-8 leading-relaxed">
-                                Wir befinden uns in der Engerser Landstraße. Komm vorbei oder bestelle bequem telefonisch!
+                                Wir befinden uns in der Musterstraße. Komm vorbei oder bestelle bequem telefonisch!
                             </p>
                             
                             <div class="space-y-6">
@@ -320,7 +304,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-lg">Adresse</h4>
-                                        <p class="text-gray-300">Engerser Landstraße 63<br>56564 Neuwied</p>
+                                        <p class="text-gray-300">Musterstraße 123<br>12345 Musterstadt</p>
                                     </div>
                                 </div>
 
@@ -358,7 +342,7 @@
                                     <div>
                                         <h4 class="font-bold text-lg">Kontakt</h4>
                                         <p class="text-gray-300">
-                                            <a href="tel:026314001021" class="hover:text-brand-orange transition">02631 / 400 10 21</a>
+                                            <a href="tel:01234567890" class="hover:text-brand-orange transition">01234 / 567 89 0</a>
                                         </p>
                                         <button class="mt-3 px-4 py-2 bg-white text-brand-dark rounded text-sm font-bold hover:bg-gray-200 transition">
                                             Bestellen
@@ -368,11 +352,11 @@
                             </div>
                         </div>
 
-                        <!-- Map -->
+                        <!-- Karte -->
                         <div class="h-96 bg-gray-700 rounded-xl overflow-hidden relative shadow-2xl group cursor-pointer">
-                            <a id="map-link" href="https://www.google.com/maps/search/?api=1&query=Engerser+Landstraße+63,+56564+Neuwied" target="_blank" rel="noopener noreferrer" class="block h-full w-full relative">
+                            <a id="map-link" href="https://www.google.com/maps/search/?api=1&query=Musterstraße+123,+12345+Musterstadt" target="_blank" rel="noopener noreferrer" class="block h-full w-full relative">
                                 <img 
-                                    src="img/karte.PNG" 
+                                    src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80" 
                                     alt="Standort auf Google Maps öffnen" 
                                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 opacity-80 group-hover:opacity-100"
                                 >
@@ -383,7 +367,7 @@
                                     </span>
                                 </div>
                                 <div class="absolute bottom-4 left-4 bg-white text-black px-4 py-2 rounded shadow font-bold text-sm">
-                                    Döner King Neuwied
+                                    Döner King Musterstadt
                                 </div>
                             </a>
                         </div>
@@ -406,7 +390,7 @@
                      </div>
                      <div class="bg-white p-4 rounded-xl shadow-lg">
                          <img 
-                            src="img/speisekarte.png" 
+                            src="https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&w=1000&q=80" 
                             class="w-full h-auto rounded-lg" 
                             alt="Volle Speisekarte"
                          >
@@ -428,10 +412,9 @@
                     </div>
                     <div class="text-gray-600 space-y-4">
                         <p><strong>Angaben gemäß § 5 TMG</strong></p>
-                        <p>Döner King Neuwied<br>Engerser Landstraße 63<br>56564 Neuwied</p>
-                        <p><strong>Kontakt</strong><br>Telefon: 02631 / 400 10 21<br>E-Mail: kontakt@beispiel-doenerking.de</p>
+                        <p>Döner King Musterstadt<br>Musterstraße 123<br>12345 Musterstadt</p>
+                        <p><strong>Kontakt</strong><br>Telefon: 01234 / 567 89 0<br>E-Mail: kontakt@mustermann-kebab.de</p>
                         <p><strong>Umsatzsteuer-ID</strong><br>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE123456789</p>
-                        <p class="text-sm italic text-gray-400 mt-4">(Dies ist ein Platzhalter-Impressum. Bitte fügen Sie hier Ihre rechtlichen Angaben ein.)</p>
                     </div>
                 </div>
             </section>
@@ -450,15 +433,7 @@
                     </div>
                     <div class="text-gray-600 space-y-4">
                         <h3 class="text-xl font-bold text-brand-dark">1. Datenschutz auf einen Blick</h3>
-                        <p><strong>Allgemeine Hinweise</strong><br>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
-                        
-                        <h3 class="text-xl font-bold text-brand-dark mt-6">2. Hosting und Content Delivery Networks (CDN)</h3>
-                        <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter: [Muster-Provider].</p>
-                        
-                        <h3 class="text-xl font-bold text-brand-dark mt-6">3. Allgemeine Hinweise und Pflichtinformationen</h3>
-                        <p><strong>Datenschutz</strong><br>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-                        
-                        <p class="text-sm italic text-gray-400 mt-4">(Dies ist ein Platzhalter-Datenschutztext. Bitte fügen Sie hier Ihre rechtlichen Angaben ein.)</p>
+                        <p>Die IP-Adressen der Besucher werden in Server-Logfiles verarbeitet. Wir verwenden System-Schriftarten und speichern keine persönlichen Daten ohne Ihre aktive Zustimmung.</p>
                     </div>
                 </div>
             </section>
@@ -471,24 +446,20 @@
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
                 <span class="font-display font-bold text-white tracking-wider uppercase">Döner<span class="text-brand-orange">King</span></span>
-                <span class="text-sm ml-2">&copy; 2026 Alle Rechte vorbehalten.</span>
+                <span class="text-sm ml-2">&copy; 2026 Döner King. Alle Rechte vorbehalten.</span>
             </div>
             <div class="flex space-x-6 text-xl">
-                <!-- Instagram -->
                 <a href="#" class="hover:text-white transition">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <!-- Facebook -->
                 <a href="#" class="hover:text-white transition">
                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                 </a>
-                <!-- TikTok -->
                 <a href="#" class="hover:text-white transition">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                 </a>
             </div>
             <div class="mt-4 md:mt-0 text-sm">
-                <!-- Links zu den eigenen Seiten (Views) -->
                 <a href="#impressum" class="hover:text-white mr-4">Impressum</a>
                 <a href="#datenschutz" class="hover:text-white">Datenschutz</a>
             </div>
@@ -496,7 +467,6 @@
     </footer>
 
     <script>
-        // Mobile Menu Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -510,7 +480,6 @@
             });
         });
 
-        // Sticky Navbar effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
